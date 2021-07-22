@@ -37,6 +37,7 @@ class AvrGdb < Formula
     ]
 
     mkdir "build" do
+      inreplace "../bfd/elf-bfd.h", "#define _LIBELF_H_ 1", "#define _LIBELF_H_ 1\n\n#include <string.h>"
       system "../configure", *args
       system "make"
 
